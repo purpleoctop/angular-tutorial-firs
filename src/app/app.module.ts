@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Router } from '@angular/router';
 import { NgModule } from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -30,7 +31,8 @@ import { ShippingComponent } from './shipping/shipping.component';
       {path: 'products/:productId', component: ProductDetailsComponent},
       {path: 'cart', component: CartComponent},
       {path: 'shipping', component: ShippingComponent}
-    ])
+    ]),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
