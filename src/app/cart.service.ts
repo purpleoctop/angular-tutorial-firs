@@ -30,4 +30,9 @@ export class CartService {
 
     }
 
+    removeItem(product) {
+        this.items.splice((this.items.indexOf(product) - 1), 1);
+        return this.items;
+    }
+
 }

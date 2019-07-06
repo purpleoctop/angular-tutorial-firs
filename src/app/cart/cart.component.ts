@@ -33,6 +33,16 @@ export class CartComponent implements OnInit {
     this.checkoutForm.get('address').setValue('Tbilisi');
   }
 
+  clearCart() {
+      this.items = this.cartService.clearCart();
+      return this.items;
+  }
+
+  removeItem(product) {
+    this.items = this.cartService.removeItem(product);
+    return this.items;
+  }
+
   ngOnInit() {
   }
 

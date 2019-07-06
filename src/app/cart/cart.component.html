@@ -1,10 +1,12 @@
-<h3>Cart</h3>
+<h3>Cart <button class="button" type="button" (click)="clearCart()">X</button></h3>
+
 <p>
     <a routerLink="/shipping">Shipping Prices</a>
 
 </p>
 
 <div class="cart-item" *ngFor="let item of items">
+    <button class="button" type="button" (click)="cartService.removeItem(product)">X</button>
     <span> {{ item.name }} </span>
     <span> {{ item.price | currency }} </span>
 </div>
