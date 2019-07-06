@@ -1,0 +1,10 @@
+<h3>WishList <button class="button" type="button" (click)="clearWishlist()">X</button></h3>
+
+
+<div class="cart-item" *ngFor="let star of stars">
+    <button class="button" type="button" (click)="removeItem(star)">X</button>
+    <span> {{ star.name }} </span>
+    <span> {{ star.price | currency }} </span>
+</div>
+
+

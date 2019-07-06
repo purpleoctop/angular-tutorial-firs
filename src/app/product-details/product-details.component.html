@@ -5,4 +5,5 @@
     <h3>{{ product.price | currency }} </h3>
     <p> {{ product.description }} </p> 
     <button *ngIf="!(cartService.items.includes(product))" (click) ='addToCart(product)'>Buy</button>
+    <button (click) ='addToWishlist(product)'>star this item</button>
 </div>
