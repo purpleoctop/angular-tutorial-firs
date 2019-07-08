@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-cart',
@@ -17,14 +18,41 @@ export class CartComponent implements OnInit {
     this.items = this.cartService.getItems();
 
     this.checkoutForm = this.formBuilder.group({
-      name: ['', [Validators.minLength(2)]],
+      name: ['', [this.forbiddenName(), Validators.minLength(4)]],
       address: this.formBuilder.group({
-        street: '',
-        city: '',
-        state: '',
-        zip: ''
-    })
+      street: '',
+      city: '',
+      state: '',
+      zip: ''
+    }, {validators: this.crossValidation})
     });
+  }
+  static isZipValid( zip ) {
+    return zip.length < 3;
+  }
+
+  static isCityValid( city ) {
+    return city && city[0].toLowerCase() === 'a';
+  }
+
+  crossValidation(fromGroup) {
+    const zip = fromGroup.get('zip').value;
+    const zipStatus = CartComponent.isZipValid(zip);
+
+    const city = fromGroup.get('city').value;
+    const cityStatus = CartComponent.isCityValid(city);
+    const validationResult = {
+      zipStatus,
+      cityStatus
+    };
+
+    return validationResult.zipStatus && validationResult.cityStatus ? null : validationResult;
+  }
+
+  forbiddenName() {
+  return(formControl) => {
+    return formControl.value === 'Oliver' ? {forbiddenName: {invalid : true}} : null;
+    };
   }
 
   onSubmit(customerData) {
@@ -32,7 +60,7 @@ export class CartComponent implements OnInit {
     this.items = this.cartService.clearCart();
     this.checkoutForm.reset();
   }
- 
+
   setDefault() {
     this.checkoutForm.patchValue({
       name: 'Jon Doe'
@@ -42,6 +70,29 @@ export class CartComponent implements OnInit {
   removeItem(product) {
     this.items = this.cartService.removeItem(product);
     return this.items;
+  }
+
+  clearCart() {
+    this.items = this.cartService.clearCart();
+    return this.items;
+  }
+  get name() {
+    return this.checkoutForm.get('name') as FormControl;
+  }
+
+  get address() {
+    return this.checkoutForm.get('address') as FormGroup;
+  }
+
+  get city() {
+    return this.checkoutForm.get('address').get('city') as FormControl;
+  }
+  get state() {
+    return this.checkoutForm.get('address').get('state') as FormControl;
+  }
+
+  get zip() {
+    return this.checkoutForm.get('address').get('zip') as FormControl;
   }
 
   ngOnInit() {
