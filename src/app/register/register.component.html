@@ -1,0 +1,33 @@
+<h1><b>Register Form</b></h1>
+<p>You can register here</p>
+<form [formGroup]="checkoutForm">
+<div>
+    <label>E-mail</label>
+    <input type="text" formControlName='mail' required>
+</div>
+<div>
+    <label>Password</label>
+    <input type="text" formControlName='password' required>
+</div>
+<div>
+    <label>Confirm Password</label>
+    <input type="text" formControlName='confPassword' required>
+</div>
+<div>
+    <label>Nickname</label>
+    <input type="text" formControlName='nickname' required>
+</div>
+<div>
+    <label>Phone Number</label>
+    <input type="text" formControlName='phone' required>
+</div>
+<div>
+    <label>Website</label>
+    <input type="text" formControlName='website' required>
+</div>
+<div>
+    <label>I have read the <a>agreement</a></label>
+    <input type="checkbox" formControlName='checkbox' required>
+</div>
+<button>Register</button>
+</form>
