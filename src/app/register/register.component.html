@@ -1,33 +1,99 @@
-<h1><b>Register Form</b></h1>
-<p>You can register here</p>
-<form [formGroup]="checkoutForm">
 <div>
-    <label>E-mail</label>
-    <input type="text" formControlName='mail' required>
+  <h1><b>Register Form</b></h1>
+  <p>You can register here</p>
+  <form [formGroup]="registerForm">
+    <div>
+      <section>
+        <label>E-mail</label>
+        <input type="text" formControlName='email' required>
+      </section>
+    </div>
+    <div>
+      <section>
+        <label>Password</label>
+        <input type="text" formControlName='password' required>
+      </section>
+    </div>
+    <div>
+      <section>
+        <label>Confirm Password</label>
+        <input type="text" formControlName='confPassword' required>
+      </section>
+    </div>
+    <div>
+      <section>
+        <label>Nickname</label>
+        <input type="text" formControlName='nickname' required>
+      </section>
+    </div>
+    <div>
+      <section>
+        <label>Phone Number</label>
+        <input type="text" formControlName='phone' required>
+      </section>
+    </div>
+    <div>
+      <section>
+        <label>Website</label>
+        <input type="text" formControlName='website' required>
+      </section>
+    </div>
+    <div style="display:flex; width:200px; justify-content:space-between; padding-left:200px; box-sizing: content-box">
+        <input type="checkbox" formControlName='checkbox' required>
+        <label>I have read the <a>agreement</a></label>
+    </div>
+    <button *ngIf="checkbox.value">Register</button>
+  </form>
+
+  <div>
+    <p style="color:red">WARNING</p>
+    <div *ngIf="email.invalid &&(email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+        E-mail is required field
+      </div>
+      <div *ngIf="email.errors.isValidemail?.invalid">
+        Mail is incorrect
+      </div>
+    </div>
+    <div *ngIf="password.invalid &&(password.dirty || password.touched)">
+      <div *ngIf="password.errors.required">
+        password is required field
+      </div>
+      <div *ngIf="password.errors.isValidPass?.invalid">
+        Password should contain only numbers and letters
+      </div>
+    </div>
+    <div *ngIf="confPassword.invalid &&(confPassword.dirty || confPassword.touched)">
+      <div *ngIf="confPassword.errors.required">
+        Confirming password is neccessary
+      </div>
+      <div *ngIf="confPassword.errors.isValidConfirm?.invalid">
+        Passwords should match!
+      </div>
+    </div>
+    <div *ngIf="nickname.invalid &&(nickname.dirty || nickname.touched)">
+      <div *ngIf="nickname.errors.required">
+        Nickname is required
+      </div>
+      <div *ngIf="nickname.errors.isValidNickname?.invalid">
+        nickname should onlu contain numbers, letters and -
+      </div>
+    </div>
+    <div *ngIf="phone.invalid &&(phone.dirty || phone.touched)">
+      <div *ngIf="phone.errors.required">
+        Phone number is required
+      </div>
+      <div *ngIf="phone.errors.isValidPhone?.invalid">
+        Please enter valid phone number
+      </div>
+    </div>
+    <div *ngIf="website.invalid &&(website.dirty || website.touched)">
+      <div *ngIf="website.errors.required">
+        Webpage is required
+      </div>
+      <div *ngIf="website.errors.isValidWeb?.invalid">
+        Please enter valid web URL
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-    <label>Password</label>
-    <input type="text" formControlName='password' required>
-</div>
-<div>
-    <label>Confirm Password</label>
-    <input type="text" formControlName='confPassword' required>
-</div>
-<div>
-    <label>Nickname</label>
-    <input type="text" formControlName='nickname' required>
-</div>
-<div>
-    <label>Phone Number</label>
-    <input type="text" formControlName='phone' required>
-</div>
-<div>
-    <label>Website</label>
-    <input type="text" formControlName='website' required>
-</div>
-<div>
-    <label>I have read the <a>agreement</a></label>
-    <input type="checkbox" formControlName='checkbox' required>
-</div>
-<button>Register</button>
-</form>
