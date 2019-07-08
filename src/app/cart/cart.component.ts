@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TestabilityRegistry } from '@angular/core';
 import { CartService } from '../cart.service';
 import { FormBuilder } from '@angular/forms';
 
@@ -29,8 +29,12 @@ export class CartComponent implements OnInit {
   }
 
   setDefault() {
-    this.checkoutForm.get('name').setValue('Jon Doe');
-    this.checkoutForm.get('address').setValue('Tbilisi');
+    // this.checkoutForm.get('name').setValue('Jon Doe');
+    // this.checkoutForm.get('address').setValue('Tbilisi');
+    this.checkoutForm.patchValue({
+      name: 'Jon Doe',
+      address: 'Tbilisi'
+    });
   }
 
   removeItem(product) {
