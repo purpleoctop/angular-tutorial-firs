@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -8,19 +9,22 @@ import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
 registerForm;
+pass;
 
   constructor(
     private formBuilder: FormBuilder,
   ) {
     this.registerForm = this.formBuilder.group({
       email: ['', [this.isValidemail()]],
-      password: ['', [this.isValidPass()]],
+      password: ['', [this.isValidPass(), this.isComplexPass()]],
       confPassword: ['', [this.isValidConfirm()]],
       nickname: ['', [this.isValidNickname()]],
       phone: ['', [this.isValidPhone()]],
       website: ['', [this.isValidWeb()]],
       checkbox: ''
     });
+    this.pass = this.registerForm.get('password');
+
   }
 
   isValidemail() {
@@ -33,15 +37,21 @@ registerForm;
   isValidPass() {
     return(formControl) => {
       const letterNumber = /^[a-zA-Z0-9]*$/;
-      return((!(formControl.value.match(letterNumber))) && (formControl.value.length > 7)) ? {isValidPass: {invalid : true}} : null;
+      return(!(formControl.value.match(letterNumber))) ? {isValidPass: {invalid : true}} : null;
+    };
+  }
+  isComplexPass() {
+    return(formControl) => {
+      return(formControl.value.length < 7) ? {isComplexPass: {invalid : true}} : null;
     };
   }
   isValidConfirm() {
     return(formControl) => {
-      return(formControl.value) ? {isValidConfirm: {invalid : true}} : null;
-    };
-  }
-
+      if (this.pass) {
+      return(!(formControl.value === this.pass.value)) ? {isValidConfirm: {invalid : true}} : null;
+    }
+  };
+}
   isValidNickname() {
     return(formControl) => {
       const letterNumber = /^[a-zA-Z0-9_.]*$/;
@@ -61,6 +71,13 @@ registerForm;
       const web = /^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$/;
       return(!(formControl.value.match(web))) ? {isValidWeb: {invalid : true}} : null;
     };
+  }
+  isDisabled() {
+    return(!(this.checkbox.value));
+  }
+
+  register() {
+    return(this.registerForm.status === 'INVALID') ? window.alert('please check warnings section') : window.alert('Congrats!');
   }
 
   get email() {

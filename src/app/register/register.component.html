@@ -4,49 +4,51 @@
   <form [formGroup]="registerForm">
     <div>
       <section>
-        <label>E-mail</label>
+        <label><span style="color: red">* </span>E-mail :</label>
         <input type="text" formControlName='email' required>
       </section>
     </div>
     <div>
       <section>
-        <label>Password</label>
+        <label><span style="color: red">* </span>Password :</label>
         <input type="text" formControlName='password' required>
       </section>
     </div>
     <div>
       <section>
-        <label>Confirm Password</label>
+        <label><span style="color: red">* </span>Confirm Password :</label>
         <input type="text" formControlName='confPassword' required>
       </section>
     </div>
     <div>
       <section>
-        <label>Nickname</label>
+        <label><span style="color: red">* </span>Nickname :</label>
         <input type="text" formControlName='nickname' required>
       </section>
     </div>
     <div>
       <section>
-        <label>Phone Number</label>
+        <label><span style="color: red">* </span>Phone Number :</label>
         <input type="text" formControlName='phone' required>
       </section>
     </div>
     <div>
       <section>
-        <label>Website</label>
+        <label><span style="color: red">* </span>Website :</label>
         <input type="text" formControlName='website' required>
       </section>
     </div>
-    <div style="display:flex; width:200px; justify-content:space-between; padding-left:200px; box-sizing: content-box">
+    <div style="display:flex; width:200px; justify-content:space-between; padding-left:197px; box-sizing: content-box">
         <input type="checkbox" formControlName='checkbox' required>
         <label>I have read the <a>agreement</a></label>
     </div>
-    <button *ngIf="checkbox.value">Register</button>
+    <button type="submit" [disabled]="isDisabled()" (click)="register()">Register</button>
   </form>
 
   <div>
     <p style="color:red">WARNING</p>
+    status: {{registerForm.status}}
+    {{password.value}}
     <div *ngIf="email.invalid &&(email.dirty || email.touched)">
       <div *ngIf="email.errors.required">
         E-mail is required field
@@ -62,6 +64,9 @@
       <div *ngIf="password.errors.isValidPass?.invalid">
         Password should contain only numbers and letters
       </div>
+      <div *ngIf="password.errors.isComplexPass?.invalid">
+            Password should be more than 7 characters long
+          </div>
     </div>
     <div *ngIf="confPassword.invalid &&(confPassword.dirty || confPassword.touched)">
       <div *ngIf="confPassword.errors.required">
@@ -76,7 +81,7 @@
         Nickname is required
       </div>
       <div *ngIf="nickname.errors.isValidNickname?.invalid">
-        nickname should onlu contain numbers, letters and -
+        nickname should only contain numbers, letters and -
       </div>
     </div>
     <div *ngIf="phone.invalid &&(phone.dirty || phone.touched)">
@@ -84,7 +89,7 @@
         Phone number is required
       </div>
       <div *ngIf="phone.errors.isValidPhone?.invalid">
-        Please enter valid phone number
+        Please enter phone number in either of following formats +380-555-101-287 or +380123456789
       </div>
     </div>
     <div *ngIf="website.invalid &&(website.dirty || website.touched)">
