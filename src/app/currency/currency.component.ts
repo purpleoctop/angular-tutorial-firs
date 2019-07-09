@@ -21,7 +21,14 @@ length: number;
     const complete = (length) => {
       this.length = length;
     };
-    const observable = this.currencyService.subscribe(action, complete);
+    const filterCallback = ({value}) => value > 10;
+    const mapCallback = ({currency, value}) => ({icon : '🏦', currency, value});
+    const Observer = this.currencyService.observer;
+
+    const observable = this.currencyService
+    .filter(filterCallback)
+    .map(mapCallback)
+    .subscribe(action, complete);
   }
 
 }
