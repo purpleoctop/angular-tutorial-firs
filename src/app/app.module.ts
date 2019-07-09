@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { ShippingComponent } from './shipping/shipping.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RegisterComponent } from './register/register.component';
+import { CurrencyComponent } from './currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
     CartComponent,
     ShippingComponent,
     WishlistComponent,
-    RegisterComponent
+    RegisterComponent,
+    CurrencyComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,9 @@ import { RegisterComponent } from './register/register.component';
       {path: 'cart', component: CartComponent},
       {path: 'shipping', component: ShippingComponent},
       {path: 'wishlist', component: WishlistComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent},
+      {path: 'currency', component: CurrencyComponent}
+
     ]),
     ReactiveFormsModule
   ],
