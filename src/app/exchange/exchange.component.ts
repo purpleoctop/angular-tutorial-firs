@@ -9,7 +9,8 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
   styleUrls: ['./exchange.component.scss']
 })
 export class ExchangeComponent implements OnInit {
-
+  curr1;
+  curr2;
   data;
   to;
   constructor(private httpClient: HttpClient) {
@@ -17,7 +18,7 @@ export class ExchangeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRate('USD', 'EUR');
+    this.getRate(this.curr1, 'EUR');
   }
 
 
@@ -25,8 +26,14 @@ export class ExchangeComponent implements OnInit {
       const url = `https://api.exchangeratesapi.io/latest?base=${currency1}&symbols=${currency2}`;
       this.httpClient
         .get(url).subscribe(value => {
-         console.log(value);
+         console.log(value['rates'][currency2]);
         });
+}
+setCurrency1(curr) {
+  this.curr1 = curr;
+}
+setCurrency2(curr) {
+  this.curr2 = curr;
 }
 
 
