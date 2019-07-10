@@ -1,14 +1,14 @@
 <main>
     <div>
-        <input type="number" placeholder="From">
-        <select (change)="setCurrency1($event.target.value)" >
+        <input type="number" [value]="currencies.curr1.rate"  (change)="setRate1($event.target.value)" placeholder="From">
+        <select [(ngModel)]="currencies.curr1.symbol" (change)="setSymbol1($event.target.value)">
             <option *ngFor="let c of data" [value]="c">{{c}}</option>
         </select>
     </div>
 
     <div>
-        <input type="number" placeholder="To" value="{{to}}">
-        <select (change)="setCurrency2($event.target.value)">
+        <input type="number" [value]="currencies.curr2.rate" (change)="setRate2($event.target.value)" placeholder="To">
+        <select [(ngModel)]="currencies.curr2.symbol" (change)="setSymbol2($event.target.value)">
             <option *ngFor="let c of data" [value]="c">{{c}}</option>
         </select>
     </div>
