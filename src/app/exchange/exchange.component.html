@@ -1,0 +1,15 @@
+<main>
+    <div>
+        <input type="number" placeholder="From">
+        <select >
+            <option *ngFor="let c of data" [value]="c">{{c}}</option>
+        </select>
+    </div>
+
+    <div>
+        <input type="number" placeholder="To" value="{{to}}">
+        <select >
+            <option *ngFor="let c of data" [value]="c">{{c}}</option>
+        </select>
+    </div>
+</main>

@@ -14,6 +14,8 @@ import { ShippingComponent } from './shipping/shipping.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { RegisterComponent } from './register/register.component';
 import { CurrencyComponent } from './currency/currency.component';
+import { ExchangeComponent } from './exchange/exchange.component';
+import { ShippingService } from './shipping.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { CurrencyComponent } from './currency/currency.component';
     ShippingComponent,
     WishlistComponent,
     RegisterComponent,
-    CurrencyComponent
+    CurrencyComponent,
+    ExchangeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,12 +42,13 @@ import { CurrencyComponent } from './currency/currency.component';
       {path: 'shipping', component: ShippingComponent},
       {path: 'wishlist', component: WishlistComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'currency', component: CurrencyComponent}
+      {path: 'currency', component: CurrencyComponent},
+      {path: 'exchange', component: ExchangeComponent}
 
     ]),
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ShippingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
