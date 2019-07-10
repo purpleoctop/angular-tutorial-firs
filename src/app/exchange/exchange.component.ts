@@ -12,7 +12,7 @@ export class ExchangeComponent implements OnInit {
   currencies = {
     curr1: {rate: 0, symbol: "USD"},
     curr2: {rate: 0, symbol: "USD"}
-  }
+  };
   data;
   to;
   constructor(private httpClient: HttpClient) {
@@ -29,9 +29,9 @@ export class ExchangeComponent implements OnInit {
     this.httpClient
       .get(url)
       .subscribe(value => {
-        const currency2Key = Object.keys(this.currencies).find(k=> this.currencies[k].symbol === currency2Symbol.symbol)
-        console.log(currency, value )
-        this.currencies[currency2Key].rate = value['rates'][currency2Symbol.symbol] * currency.rate
+        const currency2Key = Object.keys(this.currencies).find(k => this.currencies[k].symbol === currency2Symbol.symbol);
+        console.log(currency, value );
+        this.currencies[currency2Key].rate = value['rates'][currency2Symbol.symbol] * currency.rate;
       });
   }
 
@@ -46,9 +46,11 @@ export class ExchangeComponent implements OnInit {
   }
   setSymbol1(symbol) {
     this.currencies.curr1.symbol = symbol;
+    this.getRate(this.currencies.curr1);
   }
   setSymbol2(symbol) {
     this.currencies.curr2.symbol = symbol;
+    this.getRate(this.currencies.curr2);
   }
 
 
