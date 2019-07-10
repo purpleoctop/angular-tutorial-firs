@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyService } from '../currency.service';
-import {filter, map} from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 
 @Component({
@@ -9,8 +9,8 @@ import {filter, map} from 'rxjs/operators';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-rates: Array<object> = [];
-length: number;
+  rates: Array<object> = [];
+  length: number;
   constructor(
     private currencyService: CurrencyService
   ) { }
@@ -21,15 +21,25 @@ length: number;
     };
 
     const complete = () => {
-    this.length = this.rates.length;
+      this.length = this.rates.length;
     };
-    const filterCallback = ({value}) => value > 10;
-    const mapCallback = ({currency, value}) => ({icon : '🏦', currency, value});
+
+    const filterCallback = ({ value }) => value > 50;
+    const mapCallback = ({ rates }) => {
+      const currency = Object.keys(rates)[0];
+      const value = rates[currency];
+      return {
+        icon: '🏦',
+        currency,
+        value
+      };
+    };
+
     const Observer = this.currencyService.observer;
 
     const observable = Observer
-    .pipe(filter(filterCallback), map(mapCallback))
-    .subscribe({next: action, complete});
+    .pipe(map(mapCallback), filter(filterCallback))
+    .subscribe({ next: action, complete });
 
   }
 
