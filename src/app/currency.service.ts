@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { data } from './rates';
+import { from } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,12 +10,7 @@ result;
 observer;
   constructor() {
     this.result = this.transformObjectToArray(data.rates);
-    this.observer = {
-      result: this.result,
-      subscribe: this.subscribe,
-      filter: this.filter,
-      map: this.map
-    };
+    this.observer = from(this.result);
   }
   transformObjectToArray(obj) {
     const items = [];
@@ -27,16 +24,6 @@ observer;
       items.push(item);
     }
     return items;
-  }
-
-  filter(cb) {
-    this.result = this.result.filter(cb);
-    return this;
-  }
-
-  map(cb) {
-    this.result = this.result.map(cb);
-    return this;
   }
 
   subscribe(next, complete) {
