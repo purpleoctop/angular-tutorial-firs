@@ -19,8 +19,11 @@ article;
 
   ngOnInit() {
     this.routerState.paramMap.subscribe((params) => {
-      const articleId = +params.get('ArticleId');
+      const articleId = +params.get('articleId');
       const article = this.newsService.getArticle(articleId);
+      if (!article) {
+        this.router.navigate(['Error']);
+      }
       this.article = article;
     });
   }

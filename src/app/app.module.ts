@@ -54,8 +54,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
       {path: 'exchange', component: ExchangeComponent},
       {path: 'dashboard', component: DashboardComponent},
       {path: 'dashboard/news', component: NewsComponent},
-      {path: 'dashboard/news/:articleId', component: ArticleComponent}
-  
+      {path: 'dashboard/news/:articleId', component: ArticleComponent},
+      {path: 'Error', component: ErrorPageComponent}
+
 
     ]),
     ReactiveFormsModule,
