@@ -44,18 +44,18 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      {path: '', component: ProductListComponent},
-      {path: 'products/:productId', component: ProductDetailsComponent},
-      {path: 'cart', component: CartComponent},
-      {path: 'shipping', component: ShippingComponent},
-      {path: 'wishlist', component: WishlistComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: 'currency', component: CurrencyComponent},
-      {path: 'exchange', component: ExchangeComponent},
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'dashboard/news', component: NewsComponent},
-      {path: 'dashboard/news/:articleId', component: ArticleComponent},
-      {path: 'Error', component: ErrorPageComponent}
+      {path: '', data: {name: 'Home'}, component: ProductListComponent},
+      {path: 'products/:productId', data: {name: 'Product'}, component: ProductDetailsComponent},
+      {path: 'cart', data: {name: 'Cart'}, component: CartComponent},
+      {path: 'shipping', data: {name: 'Shipping'}, component: ShippingComponent},
+      {path: 'wishlist', data: {name: 'Wishlist'}, component: WishlistComponent},
+      {path: 'register', data: {name: 'Register'}, component: RegisterComponent},
+      {path: 'currency', data: {name: 'Currency'},  component: CurrencyComponent},
+      {path: 'exchange', data: {name: 'Exchange'}, component: ExchangeComponent},
+      {path: 'dashboard', data: {name: 'Dashboard'}, component: DashboardComponent},
+      {path: 'dashboard/news', data: {name: 'News'}, component: NewsComponent},
+      {path: 'dashboard/news/:articleId', data: {name: 'Article'}, component: ArticleComponent},
+      {path: 'Error', data: {name: 'Error'}, component: ErrorPageComponent}
 
 
     ]),

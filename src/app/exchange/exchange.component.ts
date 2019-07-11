@@ -11,7 +11,7 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 export class ExchangeComponent implements OnInit {
   currencies = {
     curr1: {rate: 0, symbol: "USD"},
-    curr2: {rate: 0, symbol: "USD"}
+    curr2: {rate: 0, symbol: "ISK"}
   };
   data;
   to;
