@@ -42,7 +42,6 @@ export class ExchangeComponent implements OnInit {
   setRate2(rate) {
     this.currencies.curr2.rate = rate;
     this.getRate(this.currencies.curr2);
-
   }
   setSymbol1(symbol) {
     this.currencies.curr1.symbol = symbol;

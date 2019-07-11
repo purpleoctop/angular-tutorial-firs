@@ -16,6 +16,10 @@ import { RegisterComponent } from './register/register.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import { ShippingService } from './shipping.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NewsComponent } from './news/news.component';
+import { ArticleComponent } from './article/article.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { ShippingService } from './shipping.service';
     WishlistComponent,
     RegisterComponent,
     CurrencyComponent,
-    ExchangeComponent
+    ExchangeComponent,
+    DashboardComponent,
+    NewsComponent,
+    ArticleComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,11 @@ import { ShippingService } from './shipping.service';
       {path: 'wishlist', component: WishlistComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'currency', component: CurrencyComponent},
-      {path: 'exchange', component: ExchangeComponent}
+      {path: 'exchange', component: ExchangeComponent},
+      {path: 'dashboard', component: DashboardComponent},
+      {path: 'dashboard/news', component: NewsComponent},
+      {path: 'dashboard/news/:articleId', component: ArticleComponent}
+  
 
     ]),
     ReactiveFormsModule,
