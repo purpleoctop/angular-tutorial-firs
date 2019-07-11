@@ -15,8 +15,8 @@ export class GuardComponent implements OnInit {
   ngOnInit() {
   }
 
-  get access(){
-    return this.authService.isUserAuthenticated() ? "Allowed" : "Blocked";
+  get access() {
+    return this.authService.isUserAuthenticated() ? 'Allowed' : 'Blocked';
   }
   allow() {
     this.authService.allowAccess();

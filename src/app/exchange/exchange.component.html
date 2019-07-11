@@ -1,6 +1,6 @@
 <main>
     <div>
-        <input type="number" [value]="currencies.curr1.rate"  (input)="setRate1($event.target.value)" placeholder="From">
+        <input type="number"  [value]="currencies.curr1.rate"  (input)="setRate1($event.target.value)" placeholder="From">
         <select [(ngModel)]="currencies.curr1.symbol" (change)="setSymbol1($event.target.value)">
             <option *ngFor="let c of data" [value]="c">{{c}}</option>
         </select>
