@@ -1,0 +1,18 @@
+<h1>Login Page</h1>
+<form [formGroup]="loginForm">
+    <div>
+      <section>
+        <label><span style="color: red">* </span>E-mail :</label>
+        <input type="text" formControlName='email' required>
+      </section>
+    </div>
+    <div>
+      <section>
+        <label><span style="color: red">* </span>Password :</label>
+        <input type="text" formControlName='password' required>
+      </section>
+    </div>
+    </form>
+
+    <button (click)="login()" [routerLink]="['/users']">Log in</button>
+    

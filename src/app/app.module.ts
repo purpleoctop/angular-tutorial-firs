@@ -23,6 +23,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AdminComponent } from './admin/admin.component';
 import { GuardComponent } from './guard/guard.component';
 import { AuthGuard } from './auth.guard';
+import { UsersComponent } from './users/users.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AuthGuard } from './auth.guard';
     ArticleComponent,
     ErrorPageComponent,
     AdminComponent,
-    GuardComponent
+    GuardComponent,
+    UsersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -62,8 +66,9 @@ import { AuthGuard } from './auth.guard';
       {path: 'dashboard/news/:articleId', data: {name: 'Article'}, component: ArticleComponent},
       {path: 'Error', data: {name: 'Error'}, component: ErrorPageComponent},
       {path: 'admin', data: {name: 'Admin'}, canActivate: [AuthGuard], component: AdminComponent},
-      {path: 'guard', data: {name: 'Guard'}, component: GuardComponent}
-
+      {path: 'guard', data: {name: 'Guard'}, component: GuardComponent},
+      {path: 'users', data: {name: 'Users'}, canActivate: [LoginGuard], component: UsersComponent},
+      {path: 'login', data: {name: 'LogIn'}, component: LoginComponent}
 
     ]),
     ReactiveFormsModule,
