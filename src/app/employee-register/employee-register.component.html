@@ -1,0 +1,24 @@
+<p>Register new employee here</p>
+
+<form [formGroup]="employeeregisterForm">
+  <div>
+    <section>
+      <label><span style="color: red">* </span>Name :</label>
+      <input type="text" formControlName='name' required>
+    </section>
+  </div>
+  <div>
+    <section>
+      <label><span style="color: red">* </span>Salary :</label>
+      <input type="number" formControlName='salary' required>
+    </section>
+  </div>
+  <div>
+    <section>
+      <label><span style="color: red">* </span>Age :</label>
+      <input type="number" formControlName='age' required>
+    </section>
+  </div>
+</form>
+
+<button (click)="addEmp(employee)">Add</button>
