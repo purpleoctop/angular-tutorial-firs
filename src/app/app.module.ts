@@ -25,7 +25,7 @@ import { GuardComponent } from './guard/guard.component';
 import { AuthGuard } from './auth.guard';
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
-import { LoginGuard } from './login.guard'
+import { LoginGuard } from './login.guard';
 
 @NgModule({
   declarations: [
@@ -70,6 +70,7 @@ import { LoginGuard } from './login.guard'
       {path: 'guard', data: {name: 'Guard'}, component: GuardComponent},
       {path: 'users', data: {name: 'Users'}, canActivate: [LoginGuard], component: UsersComponent},
       {path: 'login', data: {name: 'LogIn'}, component: LoginComponent}
+
 
     ]),
     ReactiveFormsModule,

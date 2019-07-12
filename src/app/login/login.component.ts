@@ -4,6 +4,7 @@ import { Users} from "../users";
 import { LoginService } from "../login.service"
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,18 +35,9 @@ check
     return this.loginForm.get('password') as FormControl;
   }
 
-  checkUser(mail, password){ 
-    for(let user of Users) {
-     this.check = ((user.mail===mail)&&(user.password===password)) ? true: false;
-     if (this.check){
-       this.loggedUser=user;
-       break;
-     }
-   }
-   return this.check;
-}
+
   login(){ 
-     this.isAuth=this.checkUser(this.mail.value, this.password.value);
+     this.isAuth=this.loginService.checkUser(this.mail.value, this.password.value);
      return this.isAuth ? this.loginService.accessUsers() : this.loginService.blockUsers();
   }
 

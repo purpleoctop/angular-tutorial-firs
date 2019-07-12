@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { of } from 'rxjs';
+import {RegisterService} from '../register.service'
 
 @Component({
   selector: 'app-register',
@@ -10,9 +11,11 @@ import { of } from 'rxjs';
 export class RegisterComponent implements OnInit {
 registerForm;
 pass;
+user= {email:'', password:'', nickname:''}
 
   constructor(
     private formBuilder: FormBuilder,
+    private registerService: RegisterService
   ) {
     this.registerForm = this.formBuilder.group({
       email: ['', [this.isValidemail()]],
@@ -77,7 +80,11 @@ pass;
   }
 
   register() {
-    return(this.registerForm.status === 'INVALID') ? window.alert('please check warnings section') : window.alert('Congrats!');
+    this.user.email=this.email.value;
+    this.user.password=this.password.value;
+    this.user.nickname=this.nickname.value;
+    
+    return(this.registerForm.status === 'INVALID') ? window.alert('please check warnings section') : this.registerService.addUser(this.user);
   }
 
   get email() {
@@ -105,6 +112,7 @@ pass;
   get checkbox() {
     return this.registerForm.get('checkbox') as FormControl;
   }
+
   ngOnInit() {
   }
 

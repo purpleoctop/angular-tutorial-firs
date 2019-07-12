@@ -1,7 +1,12 @@
 <p>users works!</p>
 
 <div>
-    <p *ngFor="let user of users">mail: {{user.mail}}  password: {{user.password}}</p>
-</div>
+    <p *ngFor="let user of users">
+        mail: {{user.mail}}  password: {{user.password}}
+        <button *ngIf="((user.mail===loggedUser.mail)&&(user.password===loggedUser.password))" (click)="delete(user)">Remove User </button>
+        <button *ngIf="((user.mail===loggedUser.mail)&&(user.password===loggedUser.password))">Edit User</button>
 
+    </p>
+</div>
 <button [routerLink]="['/login']" (click)="log_out()">Log Out</button>
+
