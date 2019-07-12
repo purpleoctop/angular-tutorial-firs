@@ -5,7 +5,7 @@ import { Users } from './users'
   providedIn: 'root'
 })
 export class LoginService {
-  allowed
+  allowed=false;
   constructor() { }
 
 accessUsers(){
@@ -14,11 +14,11 @@ accessUsers(){
 
 blockUsers(){
   this.allowed=false;
-  alert("Please provide valid email or password")
+  alert("Please provide valid email or password");
 }
 
 isUser(){
-  return this.allowed
+  return this.allowed;
 }
 
 }
