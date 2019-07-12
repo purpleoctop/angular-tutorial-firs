@@ -12,7 +12,8 @@ import { LoginService } from "../login.service"
 export class LoginComponent implements OnInit {
 loginForm;
 loggedUser;
-isAuth
+isAuth;
+check
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService
@@ -33,10 +34,19 @@ isAuth
     return this.loginForm.get('password') as FormControl;
   }
 
+  checkUser(mail, password){ 
+    for(let user of Users) {
+     this.check = ((user.mail===mail)&&(user.password===password)) ? true: false;
+     if (this.check){
+       this.loggedUser=user;
+       break;
+     }
+   }
+   return this.check;
+}
   login(){ 
-     this.isAuth=this.loginService.checkUser(this.mail.value, this.password.value);
-     console.log(this.isAuth)
-     return this.isAuth;
+     this.isAuth=this.checkUser(this.mail.value, this.password.value);
+     return this.isAuth ? this.loginService.accessUsers() : this.loginService.blockUsers();
   }
 
 

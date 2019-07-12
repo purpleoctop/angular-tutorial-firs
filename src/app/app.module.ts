@@ -25,6 +25,7 @@ import { GuardComponent } from './guard/guard.component';
 import { AuthGuard } from './auth.guard';
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
+import { LoginGuard } from './login.guard'
 
 @NgModule({
   declarations: [
