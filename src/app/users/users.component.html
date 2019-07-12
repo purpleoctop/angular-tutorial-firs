@@ -3,3 +3,5 @@
 <div>
     <p *ngFor="let user of users">mail: {{user.mail}}  password: {{user.password}}</p>
 </div>
+
+<button [routerLink]="['/login']" (click)="log_out()">Log Out</button>
