@@ -20,6 +20,11 @@ host = 'http://dummy.restapiexample.com/api/v1';
   ) {}
 
   getEmployee(employeeID) {
-    return this.httpClient.get<IEmployee>(`${this.host}/employee/${employeeID}`);
+    const url = `${this.host}/employee/${employeeID}`;
+    return this.httpClient.get<IEmployee>(url);
+  }
+  deleteEmployee(employeeID) {
+    const url = `${this.host}/delete/${employeeID}`;
+    return this.httpClient.delete(url);
   }
 }

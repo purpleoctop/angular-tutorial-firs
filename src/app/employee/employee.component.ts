@@ -20,9 +20,14 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit() {
     this.routerState.paramMap.subscribe((params) => {
-    const employeeId = +params.get('id');
-    this.employee$ = this.employeeService.getEmployee(employeeId).subscribe(emp => this.employee$ = emp);
+    this.employeeId = +params.get('id');
+    this.employee$ = this.employeeService.getEmployee(this.employeeId).subscribe(emp => this.employee$ = emp);
   });
+  }
+
+  remove() {
+    this.employeeService.deleteEmployee(this.employeeId)
+    .subscribe(emp => this.router.navigate(['/employees']));
   }
 
 }
