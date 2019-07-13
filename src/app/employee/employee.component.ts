@@ -21,7 +21,11 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.routerState.paramMap.subscribe((params) => {
     this.employeeId = +params.get('id');
-    this.employee$ = this.employeeService.getEmployee(this.employeeId).subscribe(emp => this.employee$ = emp);
+    this.employee$ = this.employeeService.getEmployee(this.employeeId).subscribe(emp => {
+      if (!emp) {
+        this.router.navigate(['/Error']);
+      }
+      this.employee$ = emp; });
   });
   }
 
