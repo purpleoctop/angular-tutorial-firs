@@ -37,7 +37,6 @@ age: ['']
     this.employee.name = this.name.value;
     this.employee.salary = this.salary.value;
     this.employee.age = this.age.value;
-    console.log(this.employee);
     this.employee$ = this.employeeregisterService.addEmployee(this.employee).subscribe();
   }
 

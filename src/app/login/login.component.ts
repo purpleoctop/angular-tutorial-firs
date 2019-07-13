@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
-import { Users} from "../users";
-import { LoginService } from "../login.service"
+import { LoginService } from '../login.service';
 
 
 
@@ -14,30 +13,30 @@ export class LoginComponent implements OnInit {
 loginForm;
 loggedUser;
 isAuth;
-check
+check;
   constructor(
     private formBuilder: FormBuilder,
     private loginService: LoginService
-    ) { 
-    this.loginForm= formBuilder.group({
-      email:[''],
-      password:['']
-    })
+    ) {
+    this.loginForm = formBuilder.group({
+      email: [''],
+      password: ['']
+    });
   }
 
   ngOnInit() {
   }
 
-  get mail(){
+  get mail() {
     return this.loginForm.get('email') as FormControl;
   }
-  get password(){
+  get password() {
     return this.loginForm.get('password') as FormControl;
   }
 
 
-  login(){ 
-     this.isAuth=this.loginService.checkUser(this.mail.value, this.password.value);
+  login() {
+     this.isAuth = this.loginService.checkUser(this.mail.value, this.password.value);
      return this.isAuth ? this.loginService.accessUsers() : this.loginService.blockUsers();
   }
 

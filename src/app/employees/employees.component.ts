@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeesService} from '../employees.service'
+import {EmployeesService} from '../employees.service';
+
 
 @Component({
   selector: 'app-employees',
@@ -16,6 +17,6 @@ employees$;
   ngOnInit() {
     this.employees$ = this.employeesService.getEmployees();
   }
- 
+
 
 }

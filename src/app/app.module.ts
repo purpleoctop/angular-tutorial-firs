@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuard } from './login.guard';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeRegisterComponent } from './employee-register/employee-register.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { EmployeeRegisterComponent } from './employee-register/employee-register
     UsersComponent,
     LoginComponent,
     EmployeesComponent,
-    EmployeeRegisterComponent
+    EmployeeRegisterComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,9 @@ import { EmployeeRegisterComponent } from './employee-register/employee-register
       {path: 'users', data: {name: 'Users'}, canActivate: [LoginGuard], component: UsersComponent},
       {path: 'login', data: {name: 'LogIn'}, component: LoginComponent},
       {path: 'employees', data: {name: 'Employees'}, component: EmployeesComponent},
-      {path: 'employee/register', data: {name: 'EmployeeRegister'}, component: EmployeeRegisterComponent}
+      {path: 'employee/register', data: {name: 'EmployeeRegister'}, component: EmployeeRegisterComponent},
+      {path: 'employees/:id', data: {name: 'Employee'}, component: EmployeeComponent},
+
 
 
 
