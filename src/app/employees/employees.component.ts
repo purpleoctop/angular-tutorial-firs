@@ -27,10 +27,10 @@ export class EmployeesComponent implements OnInit {
     this.employeesService.getEmployees().subscribe(result => {
       this.size = result.length;
       this.pages = Math.ceil(this.size / this.itemsPerPage);
-      for (let i = 1; i <= this.pages - 2; i++) {
+      for (let i = 1; i <= (this.pages - 1); i++) {
         this.page.push(i);
       }
-      for (let i = 0; i < this.size - this.itemsPerPage; i += this.itemsPerPage) {
+      for (let i = 0; i <= (this.size); i += this.itemsPerPage) {
         this.myChunk = this.employeesService.getEmployees()
           .pipe(map(res => res.slice(i, i + this.itemsPerPage)));
         this.tempArray.push(this.myChunk);

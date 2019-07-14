@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import {EmployeeregisterService} from '../employeeregister.service';
+import { Router } from '@angular/router';
+
 
 interface CrEmployee {
   name: string;
@@ -20,7 +22,8 @@ employee = <CrEmployee>{};
 employeeregisterForm;
   constructor(
     private formBuilder: FormBuilder,
-    private employeeregisterService: EmployeeregisterService
+    private employeeregisterService: EmployeeregisterService,
+    private router: Router
   ) {
     this.employeeregisterForm = this.formBuilder.group({
 name: [''],
@@ -37,7 +40,8 @@ age: ['']
     this.employee.name = this.name.value;
     this.employee.salary = this.salary.value;
     this.employee.age = this.age.value;
-    this.employee$ = this.employeeregisterService.addEmployee(this.employee).subscribe();
+    this.employee$ = this.employeeregisterService.addEmployee(this.employee).subscribe()//emp => this.router.navigate(['/employees']));
+
   }
 
   get name() {
