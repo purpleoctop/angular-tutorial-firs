@@ -1,20 +1,29 @@
 <h1>Employees</h1>
 
 <table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Salary</th>
-            <th>Age</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employees$ | async">
-            <td>{{employee.id}}</td>
-            <td>{{employee.name}}</td>
-            <td>{{employee.salary}}</td>
-            <td>{{employee.age}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Salary</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of tempArray[currPage] | async">
+      <td>{{employee.id}}</td>
+      <td>{{employee.name}}</td>
+      <td>{{employee.salary}}</td>
+      <td>{{employee.age}}</td>
+    </tr>
+  </tbody>
 </table>
+
+<div style="display:flex; justify-content: space-between; width:500px">
+  
+  <div *ngFor="let i of page">
+    <div *ngIf="i===currPage; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock><a style="pointer-events: none; color: grey;">{{i}}</a></ng-template>
+    <ng-template #elseBlock><a (click)="getPage(i)">{{i}}</a></ng-template>
+  </div>
+</div>
