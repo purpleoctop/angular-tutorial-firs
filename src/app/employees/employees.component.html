@@ -1,5 +1,8 @@
 <h1>Employees</h1>
 
+<p>loading employees ...</p>
+<div class="loader" [@load]="data? 'start' : 'end'"></div>
+
 <table>
   <thead>
     <tr>

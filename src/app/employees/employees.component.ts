@@ -1,11 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from '../employees.service';
 import { map } from 'rxjs/operators';
+import {
+  animate,
+  trigger,
+  state,
+  style,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.scss']
+  styleUrls: ['./employees.component.scss'],
+  animations: [
+    trigger('load', [
+      state('start', style({
+        background: 'black'
+      })),
+      state('end', style({
+        background: 'white'
+      })),
+      transition('* => *', animate('2s'))
+    ])
+  ]
 })
 export class EmployeesComponent implements OnInit {
   employees$;
@@ -16,6 +34,7 @@ export class EmployeesComponent implements OnInit {
   myChunk;
   page = [];
   currPage = 1;
+  data = true;
   constructor(
     private employeesService: EmployeesService
 
@@ -24,6 +43,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.employeesService.getEmployees().subscribe(result => {
       this.size = result.length;
       this.pages = Math.ceil(this.size / this.itemsPerPage);
