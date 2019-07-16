@@ -24,7 +24,7 @@ import {
       })),
       transition('* => *', animate('2s', keyframes([
         style({backgroundColor : 'blue'}),
-        style({backgroundColor : 'navy'}),
+        style({backgroundColor : 'yellow'}),
         style({backgroundColor : 'purple'}),
         style({backgroundColor : 'green'}),
         style({backgroundColor : 'yellow'}),

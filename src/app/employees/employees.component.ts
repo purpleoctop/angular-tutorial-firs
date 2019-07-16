@@ -24,7 +24,7 @@ import {
       })),
       transition('* => *', animate('2s', keyframes([
         style({backgroundColor : 'blue'}),
-        style({backgroundColor : 'navy'}),
+        style({backgroundColor : 'yellow'}),
         style({backgroundColor : 'purple'}),
         style({backgroundColor : 'green'}),
         style({backgroundColor : 'yellow'}),
@@ -53,6 +53,8 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data = false;
+    this.data = true;
     this.employeesService.getEmployees().subscribe(result => {
       this.size = result.length;
       this.pages = Math.ceil(this.size / this.itemsPerPage);
