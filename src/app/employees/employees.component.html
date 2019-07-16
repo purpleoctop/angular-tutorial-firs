@@ -1,7 +1,9 @@
 <h1>Employees</h1>
 
+<div *ngIf="show">
 <p>loading employees ...</p>
 <div class="loader" [@load]="data? 'start' : 'end'"></div>
+</div>
 
 <table>
   <thead>

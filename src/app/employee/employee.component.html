@@ -1,9 +1,16 @@
 
+<div *ngIf="show">
+    <p>loading employee ...</p>
+    <div class="loader" [@load]="data? 'start' : 'end'"></div>
+</div>
+    
 
 <h2>ID:{{employee$.id}}</h2>
-<h2>Name: {{employee$.employee_name}} </h2>
+<div style="display : inline">
+  <h2>Name: {{employee$.employee_name}} </h2>
+</div>
 <h2>Salary: {{employee$.employee_salary}}</h2>
 <h2>Age: {{employee$.employee_age}}</h2>
 
 <button (click)="remove()">Remove</button>
-<button>Update</button>
+</div>

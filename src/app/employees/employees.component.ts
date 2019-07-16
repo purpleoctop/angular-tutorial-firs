@@ -6,7 +6,8 @@ import {
   trigger,
   state,
   style,
-  transition
+  transition,
+  keyframes
 } from '@angular/animations';
 
 @Component({
@@ -21,7 +22,15 @@ import {
       state('end', style({
         background: 'white'
       })),
-      transition('* => *', animate('2s'))
+      transition('* => *', animate('2s', keyframes([
+        style({backgroundColor : 'blue'}),
+        style({backgroundColor : 'navy'}),
+        style({backgroundColor : 'purple'}),
+        style({backgroundColor : 'green'}),
+        style({backgroundColor : 'yellow'}),
+        style({backgroundColor : 'orange'}),
+        style({backgroundColor : 'red'})
+      ])))
     ])
   ]
 })
@@ -35,6 +44,7 @@ export class EmployeesComponent implements OnInit {
   page = [];
   currPage = 1;
   data = true;
+  show = true;
   constructor(
     private employeesService: EmployeesService
 
@@ -43,7 +53,6 @@ export class EmployeesComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.employeesService.getEmployees().subscribe(result => {
       this.size = result.length;
       this.pages = Math.ceil(this.size / this.itemsPerPage);
@@ -55,6 +64,7 @@ export class EmployeesComponent implements OnInit {
           .pipe(map(res => res.slice(i, i + this.itemsPerPage)));
         this.tempArray.push(this.myChunk);
       }
+      this.show = false;
     });
   }
 
